@@ -1,0 +1,21 @@
+schema {
+    query: QueryType
+}
+
+type Collection{
+    id: String!
+    name: String!
+    items: [Item]!
+}
+
+type Item {
+    id: String!
+    name: String!
+    value: String
+    collection: Collection!
+}
+
+type QueryType {
+    itemById(id: String): Item
+    itemByName(name: String): [Item]!
+}

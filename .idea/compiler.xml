@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="Example.tlp-learner.backend.main" target="1.8" />
+      <module name="Example.tlp-learner.backend.test" target="1.8" />
+      <module name="tlp-learner.backend.main" target="1.8" />
+      <module name="tlp-learner.backend.test" target="1.8" />
+      <module name="tlp-learner.main" target="1.8" />
+      <module name="tlp-learner.test" target="1.8" />
+      <module name="tlp.learner.tlp-learner.backend.main" target="1.8" />
+      <module name="tlp.learner.tlp-learner.backend.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

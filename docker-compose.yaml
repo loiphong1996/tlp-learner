@@ -1,0 +1,15 @@
+version: "0.1"
+
+services:
+  mysql:
+    container_name: Mysql
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_USER: ktor
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: 1234
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
