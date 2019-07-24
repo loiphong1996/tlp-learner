@@ -12,7 +12,6 @@ object Items : UUIDTable() {
     val collection = reference("collection", ItemCollections)
 }
 
-
 class Item(id: EntityID<UUID>) : UUIDEntity(id) {
     companion object : UUIDEntityClass<Item>(Items)
 
@@ -20,3 +19,10 @@ class Item(id: EntityID<UUID>) : UUIDEntity(id) {
     var value by Items.value
     var collection by ItemCollection referencedOn Items.collection
 }
+
+data class ItemDTO(
+        val id: String,
+        val name: String,
+        val value: String,
+        val collection: ItemCollectionDTO?
+)

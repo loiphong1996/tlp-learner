@@ -3,13 +3,13 @@ schema {
 }
 
 type Collection{
-    id: String!
+    id: ID!
     name: String!
     items: [Item]!
 }
 
 type Item {
-    id: String!
+    id: ID!
     name: String!
     value: String
     collection: Collection!

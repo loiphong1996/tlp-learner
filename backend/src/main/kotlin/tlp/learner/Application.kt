@@ -1,19 +1,13 @@
 package tlp.learner
 
-import graphql.schema.DataFetcher
-import graphql.schema.StaticDataFetcher
-import graphql.schema.idl.RuntimeWiring.newRuntimeWiring
 import io.ktor.application.Application
-import io.ktor.application.ApplicationCallPipeline
-import io.ktor.application.call
-import io.ktor.request.uri
-import io.ktor.response.header
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
-import io.ktor.util.pipeline.PipelinePhase
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.deleteAll
+import org.jetbrains.exposed.sql.exists
 import org.jetbrains.exposed.sql.transactions.transaction
-import tlp.learner.configuration.GraphqlConfiguration
 import tlp.learner.controller.mainModule
 import tlp.learner.entity.Item
 import tlp.learner.entity.ItemCollection

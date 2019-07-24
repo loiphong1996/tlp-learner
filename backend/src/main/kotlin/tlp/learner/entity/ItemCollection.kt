@@ -15,3 +15,9 @@ class ItemCollection(id: EntityID<UUID>): UUIDEntity(id){
 
     var name by ItemCollections.name
 }
+
+data class ItemCollectionDTO (
+        val id: String,
+        val name: String,
+        val items: List<ItemDTO>
+)

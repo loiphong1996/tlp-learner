@@ -1,13 +1,13 @@
 package tlp.learner.configuration
 
 import graphql.GraphQL
-import graphql.schema.idl.SchemaGenerator
 import graphql.schema.idl.RuntimeWiring.newRuntimeWiring
+import graphql.schema.idl.SchemaGenerator
 import graphql.schema.idl.SchemaParser
-import org.jetbrains.exposed.sql.transactions.transaction
-import tlp.learner.entity.Item
-import tlp.learner.graphql.ItemResolvers
-import java.util.*
+import tlp.learner.graphql.collectionByItem
+import tlp.learner.graphql.itemByCollection
+import tlp.learner.graphql.itemById
+import tlp.learner.graphql.itemByName
 
 
 object GraphqlConfiguration {
@@ -20,8 +20,14 @@ object GraphqlConfiguration {
 
         val runtimeWiring = newRuntimeWiring()
                 .type("QueryType") { typeWiring ->
-                    typeWiring.dataFetcher("itemById", ItemResolvers.itemById)
-                    typeWiring.dataFetcher("itemByName", ItemResolvers.itemByName)
+                    typeWiring.dataFetcher("itemById", itemById)
+                    typeWiring.dataFetcher("itemByName", itemByName)
+                }
+                .type("Collection"){typeWiring ->
+                    typeWiring.dataFetcher("items", itemByCollection)
+                }
+                .type("Item"){ typeWiring ->
+                    typeWiring.dataFetcher("collection", collectionByItem)
                 }
                 .build()
 
@@ -34,8 +40,6 @@ object GraphqlConfiguration {
             it.operationName(operationName)
             it.variables(variables)
         }
-//        val executionResult = build.execute("{hello}")
-
         return executionResult.getData() ?: emptyMap()
     }
 }
